@@ -65,6 +65,7 @@ public class OkHttpUtils {
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
             OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
+            clientBuilder.hostnameVerifier((String hostname, SSLSession session) -> { return true; });
             clientBuilder.cookieJar(cookieJar);
 
             if (options.hasKey("pkPinning") && options.getBoolean("pkPinning")) {
@@ -119,6 +120,7 @@ public class OkHttpUtils {
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
             OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
+            clientBuilder.hostnameVerifier((String hostname, SSLSession session) -> { return true; });
             clientBuilder.cookieJar(cookieJar);
 
             if (BuildConfig.DEBUG) {
